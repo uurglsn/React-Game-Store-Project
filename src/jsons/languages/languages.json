@@ -1,0 +1,100 @@
+{
+    "tr_TR": {
+        "NavLink": {
+            "pay": "BAKİYE YÜKLE",
+            "cd_Key": "CD-KEY",
+            "epin": "E-PIN",
+            "twitch": "TWITCH",
+            "products": "ÜRÜNLER",
+            "news": "HABERLER",
+            "help": "YARDIM",
+            "contact": "İLETİŞİM"
+        },
+        "announcements": [
+            "Apex Legends Sezon 5: Ne Zaman Başlıyor?",
+            "Valorant'ta Ekran Kartı Sürücüsü Çöktü Hatası ve Çözümü",
+            "Star Wars Jedi: Survivor Sistem Gereksinimleri Neler?",
+            "Oyun Bilgisayarında Olması Gereken Programlar",
+            "İzlemeye Doyamayacağınız En İyi Oyun Kanalları",
+            "RPG Oyunları ve Oyun Dünyasında Rol Yapma Oyunlarının Yeri"
+        ],
+        "buttons" : {
+            "buy" : "Satın Al",
+            "steamWallet" : "STEAM CÜZDAN"
+        },
+        "categories" : {
+            "topSeller" : "ÇOK SATANLAR",
+            "discounts" : "İNDİRİME GİRENLER",
+            "skinsHeader" : "ITEMLER & SKINLER"
+        },
+        "footer" : {
+            "adverts" : "İLANLAR",
+            "accountSales" : "Hesap Satış",
+            "gameCash" : "Oyun Parası",
+            "helpCenter" : "YARDIM MERKEZİ",
+            "howDoIBuy" : "Nasıl Satın Alırım ?",
+            "payment" : "Ödeme İşlemleri",
+            "aboutPreOrder" : "Ön Sipariş Bilgilendirmesi",
+            "refundTerms" : "İptal & İade Koşulları",
+            "user" : "KULLANICI",
+            "signIn" : "Giriş Yap",
+            "register" : "Kayıt Ol",
+            "forgetPass" : "Şifremi Unuttum",
+            "contactUs" : "İletişim" ,
+            "aboutUs" : "Hakkımızda",
+            "membershipTerms" : "Üyelik Sözleşmesi",
+            "confirmationText" : "Rıza Onay Metni",
+            "electronicMsgConfirm" : "Elektronik İleti Onayı",
+            "reserved" : "Tüm Hakları Saklıdır."
+        }
+    },
+    "en_US": {
+        "NavLink": {
+            "pay": "ADD BALANCE",
+            "cd_Key": "CD-KEY",
+            "epin": "E-PIN",
+            "twitch": "TWITCH",
+            "products": "PRODUCTS",
+            "news": "NEWS",
+            "help": "HELP",
+            "contact": "CONTACT US"
+        },
+        "announcements": [
+            "Apex Legends Season 5: When Does It Start?",
+            "Valorant Video Card Driver Crashed Error and Solution",
+            "Star Wars Jedi: What Are the Survivor System Requirements?",
+            "Must have Programs for Gaming PC",
+            "The Best Gaming Channels You Can't Get Enough of Watching",
+            "RPG Games and Role Playing Games in the Game World"
+        ],
+        "buttons" : {
+            "buy" : "Buy it",
+            "steamWallet" : "STEAM WALLET"
+        },
+        "categories" : {
+            "topSeller" : "TOP SELLER",
+            "discounts" : "DISCOUNTS",
+            "skinsHeader" : "ITEMS & SKINS"
+        },
+        "footer" : {
+            "adverts" : "ADVERTS",
+            "accountSales" : "Account Sales",
+            "gameCash" : "Game Cash",
+            "helpCenter" : "Help Center",
+            "howDoIBuy" : "How Do I Buy ?",
+            "payment" : "Payment",
+            "aboutPreOrder" : "About Pre-Order",
+            "refundTerms" : "Refund Terms",
+            "user" : "User",
+            "signIn" : "Sign In",
+            "register" : "Register",
+            "forgetPass" : "Forget Password",
+            "contactUs" : "Contact Us",
+            "aboutUs" : "About Us",
+            "membershipTerms" : "Membership Terms",
+            "confirmationText" : "Confirmation Text",
+            "electronicMsgConfirm" : "Electronic Confirmation",
+            "reserved" : "All Rights Reserved." 
+        }
+    }
+}
