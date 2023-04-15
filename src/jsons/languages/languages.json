@@ -68,7 +68,7 @@
             "forgotPassLink": "Şifrenizi Mi Unuttunuz ?",
             "rememberMe": "Beni Hatırla",
             "birthDay" : "Doğum Tarihi",
-            "signInRegister" : "Kayıt Ol / Giriş Yap",
+            "signInRegister" : "Giriş Yap / Kayıt Ol",
             "needMailForActive" : "Aktivasyon Kodunuzu Almak İçin Kayıt olduğunuz E-Posta adresinizi giriniz",
             "submitButton" : "Gönder",
             "passRequest" : "Şifre Sıfırlama İsteği Almak İçin Kayıt olduğunuz E-Posta adresinizi giriniz"
@@ -144,7 +144,7 @@
             "forgotPassLink": "Forgot Your Password ?",
             "rememberMe": "Remember Me",
             "birthDay" : "Birth Day",
-            "signInRegister" : "Register / Login",
+            "signInRegister" : "Login / Register",
             "needMailForActive" : "Enter your registered e-mail address to receive your Activation Code",
             "submitButton" : "Send",
             "passRequest" : "Enter your registered e-mail address to receive a password reset request"
