@@ -146,17 +146,17 @@ const Header = () => {
 
 
 
-                <Menu as="div" className="relative max-lg:hidden   inline-block   z-50   text-left">
+                <Menu as="div" className="relative max-lg:hidden dark:text-black   inline-block   z-50   text-left"> 
                     <div>
-                        <Menu.Button className="inline-flex flex-col   border-x-[1px] border-b-[1px] border-blue-950  dark:border-white shadow-2xl  p-3 w-full justify-center gap-x-1.5 rounded-md  text-sm font-semibold  ">
+                        <Menu.Button className="inline-flex flex-col   hover:text-sky-500 transition-colors  border-[1px] border-blue-950  dark:border-white shadow-2xl  p-3 w-full justify-center gap-x-1.5 rounded-md  text-sm font-semibold  ">
 
                             <p className="flex items-center gap-3"> {languages[language].auth.signInRegister}</p>
                         </Menu.Button></div>
                     <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
                         <Menu.Items className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${theme ? "bg-gradient-to-r from-sky-100 to-teal-100  dark:text-sky-500" : "bg-gradient-to-br from-gray-700 via-gray-900 to-black  "}`}>
                             <div className={`py-1`}>
-                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/register" onClick={() => dispatch(toRegisterOrSign(true))} className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold `}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
-                                <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/register" onClick={() => dispatch(toRegisterOrSign(false))} className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold `}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
+                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/register" onClick={() => dispatch(toRegisterOrSign(true))} className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
+                                <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/register" onClick={() => dispatch(toRegisterOrSign(false))} className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
                     </Transition>
                 </Menu>
 
@@ -208,15 +208,15 @@ const Header = () => {
 
 
 
-                {theme ? (<BsFillMoonFill className="hover:text-sky-500 transition-colors cursor-pointer" onClick={toggleTheme} />) : (<HiSun className="hover:text-sky-500 transition-colors cursor-pointer" onClick={toggleTheme} />)}
+                {theme ? (<BsFillMoonFill className="hover:text-sky-500  transition-colors cursor-pointer" onClick={toggleTheme} />) : (<HiSun className="hover:text-sky-500 transition-colors cursor-pointer" onClick={toggleTheme} />)}
                 <Menu as="div" className="relative  z-50   inline-block text-left">
                     <div>
                         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md  text-sm font-semibold  "><HiTranslate className="hover:text-sky-500 transition-colors" /> </Menu.Button></div>
                     <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
                         <Menu.Items className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${theme ? "bg-gradient-to-r from-sky-100 to-teal-100  dark:text-sky-500" : "bg-gradient-to-br from-gray-700 via-gray-900 to-black  "}`}>
                             <div className={`py-1`}>
-                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><button onClick={() => dispatch(changeLanguage("tr_TR"))} className='block w-full h-full px-4 py-2 text-sm'><ReactCountryFlag countryCode="TR" svg style={{ width: '2em', height: '2em', }} title="TR" />  <p className={`pl-3  font-extrabold `}>Türkçe</p></button></Menu.Item>
-                                <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><button onClick={() => dispatch(changeLanguage("en_US"))} className="block w-full h-full px-4 py-2 text-sm" ><ReactCountryFlag countryCode="GB" svg style={{ width: '2em', height: '2em', }} title="UK" />  <p className={`pl-3  font-extrabold `}>English</p></button></Menu.Item></div></Menu.Items>
+                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><button onClick={() => dispatch(changeLanguage("tr_TR"))} className='block w-full h-full px-4 py-2 text-sm'><ReactCountryFlag countryCode="TR" svg style={{ width: '2em', height: '2em', }} title="TR" />  <p className={`pl-3  dark:text-black dark:hover:text-sky-500 font-extrabold transition-colors `}>Türkçe</p></button></Menu.Item>
+                                <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><button onClick={() => dispatch(changeLanguage("en_US"))} className="block w-full h-full px-4 py-2 text-sm" ><ReactCountryFlag countryCode="GB" svg style={{ width: '2em', height: '2em', }} title="UK" />  <p className={`pl-3  dark:text-black dark:hover:text-sky-500 font-extrabold transition-colors `}>English</p></button></Menu.Item></div></Menu.Items>
                     </Transition>
                 </Menu>
                 <AiOutlineShoppingCart />

@@ -67,11 +67,36 @@
             "orEmail": "Veya e-postanızı kullanın",
             "forgotPassLink": "Şifrenizi Mi Unuttunuz ?",
             "rememberMe": "Beni Hatırla",
-            "birthDay" : "Doğum Tarihi",
-            "signInRegister" : "Giriş Yap / Kayıt Ol",
-            "needMailForActive" : "Aktivasyon Kodunuzu Almak İçin Kayıt olduğunuz E-Posta adresinizi giriniz",
-            "submitButton" : "Gönder",
-            "passRequest" : "Şifre Sıfırlama İsteği Almak İçin Kayıt olduğunuz E-Posta adresinizi giriniz"
+            "birthDay": "Doğum Tarihi",
+            "signInRegister": "Giriş Yap / Kayıt Ol",
+            "needMailForActive": "Aktivasyon Kodunuzu Almak İçin Kayıt olduğunuz E-Posta adresinizi giriniz",
+            "submitButton": "Gönder",
+            "passRequest": "Şifre Sıfırlama İsteği Almak İçin Kayıt olduğunuz E-Posta adresinizi giriniz",
+            "acceptTerms": "Üyelik Sözleşmesini Kabul Ediyorum",
+            "membershipTerms": "Üyelik Sözleşmesi"
+        },
+        "registerErrors": {
+            "userNameTooShort": "Kullanıcı Adı En Az 3 Karakterden Oluşmalıdır",
+            "userNameTooLong": "Kullanıcı Adı En Fazla 20 Karakterden Oluşabilir",
+            "userNameRequired": "Kullanıcı Adı Zorunlu",
+            "phoneNumberError": "Cep Numaranızı Başında 0 Olmadan 10 Haneli Giriniz",
+            "phoneRequired": "Cep No Zorunlu",
+            "nameLastNameTooShort": "Ad Soyad En Az 6 Karakterden Oluşmalıdır",
+            "nameLastNameTooLong": "Ad Soyad En Fazla 50 Karakterden Oluşabilir",
+            "nameLastNameRequired": "Ad Soyad Zorunlu",
+            "birthDayRequired": "Doğum Tarihi Zorunlu",
+            "emailError": "Geçersiz E-Posta Adresi",
+            "emailRequired": "E-Posta Zorunlu",
+            "reEmailRequired": "Tekrar E-Posta Zorunlu",
+            "reEmailError": "Geçersiz Tekrar E-Posta",
+            "emailsPair": "E-Postalar Eşleşmiyor",
+            "strongPass": "Şifre 8 Karakter İçermelidir, Bir Büyük Harf, Bir Küçük Harf ve Bir Rakam",
+            "passRequired": "Şifre Zorunlu",
+            "passToShort": "Şifre En Az 8 Karakterden Oluşmalıdır",
+            "passToLong": "Şifre En Fazla 30 Karakterden Oluşabilir",
+            "passPair": "Şifreler Eşleşmiyor",
+            "rePassRequired": "Tekrar Şifre Zorunlu",
+            "termsRequired" : "Üyelik Sözleşmesini Kabul Etmelisiniz"
         }
     },
     "en_US": {
@@ -121,7 +146,6 @@
             "confirmationText": "Confirmation Text",
             "electronicMsgConfirm": "Electronic Confirmation",
             "reserved": "All Rights Reserved."
-           
         },
         "auth": {
             "signIn": "Login",
@@ -143,12 +167,36 @@
             "orEmail": "Or Use Your E-mail",
             "forgotPassLink": "Forgot Your Password ?",
             "rememberMe": "Remember Me",
-            "birthDay" : "Birth Day",
-            "signInRegister" : "Login / Register",
-            "needMailForActive" : "Enter your registered e-mail address to receive your Activation Code",
-            "submitButton" : "Send",
-            "passRequest" : "Enter your registered e-mail address to receive a password reset request"
-            
+            "birthDay": "Birth Day",
+            "signInRegister": "Login / Register",
+            "needMailForActive": "Enter your registered e-mail address to receive your Activation Code",
+            "submitButton": "Send",
+            "passRequest": "Enter your registered e-mail address to receive a password reset request",
+            "acceptTerms": "Accept the terms of membership",
+            "membershipTerms": "Membership Terms"
+        },
+        "registerErrors": {
+            "userNameTooShort": "User Name Must Have At Least 3 Characters",
+            "userNameTooLong": "User Name Can Have Up To 20 Characters",
+            "userNameRequired": "Username Required",
+            "phoneNumberError": "Enter your phone number 10 digits without prefix 0",
+            "phoneRequired": "Phone Number Required",
+            "nameLastNameTooShort": "Name Last Name Must Be At Least 6 Characters",
+            "nameLastNameTooLong": "Name Last Name Can Be Up To 50 Characters",
+            "nameLastNameRequired": "Name and Surname Required",
+            "birthDayRequired": "Date of Birth Required",
+            "emailError": "Invalid Email Address",
+            "emailRequired": "Email Required",
+            "reEmailRequired": "Re-Email Required",
+            "reEmailError": "Invalid Repeat Email",
+            "emailsPair": "Emails Do Not Match",
+            "strongPass": "Must Contain 8 Characters, One Uppercase and One Lowercase, One Number ",
+            "passRequired": "Password Required",
+            "passToShort": "Password Must Have At Least 8 Characters",
+            "passToLong": "Password Can Be Up To 30 Characters",
+            "passPair": "Passwords Do Not Match",
+            "rePassRequired": "Require Password Again",
+            "termsRequired" : "You need to accept the terms and conditions"
         }
     }
 }
