@@ -4,14 +4,14 @@ import Registry from "./components/Register";
 import { useSelector, useDispatch } from "react-redux";
 import { toRegisterOrSign } from "../../features/app/appSlice"
 import { Link } from "react-router-dom";
-
+import languages from "../../jsons/languages/languages.json"
 
 
 
 
 const SignRegister = () => {
     const dispatch = useDispatch();
-    const { signOrRegister } = useSelector((state) => state.appRedux);
+    const { signOrRegister , language } = useSelector((state) => state.appRedux);
     return (
         <div className=' flex h-screen w-screen '>
            
@@ -20,16 +20,14 @@ const SignRegister = () => {
                 <div className="flex    gap-10  justify-between   max-md:justify-center    m-10">
                     
                     
-                    <Link to="/reactive" className=" hover:text-sky-500 transition-colors">Aktivasyon Kodum Gelmedi </Link>
-                    <Link className=" hover:text-sky-500 transition-colors" to="/">Ana Sayfa</Link>
-                    
-                    
+                    <Link to="/reactive" className=" hover:text-sky-500 transition-colors">{languages[language].auth.reActiveLink} </Link>
+                    <Link className=" hover:text-sky-500 transition-colors" to="/">{languages[language].auth.mainPageNav}</Link>
                     
                     </div>
 
                 <div className=" flex mb-5  justify-center pt-10">
-                     <button onClick={() => dispatch(toRegisterOrSign(true))} className={`${signOrRegister ? "bg-white   dark:bg-black dark:text-white text-black" : "bg-black hover:text-sky-500  "}  p-2 rounded transition-colors`}>Giriş Yap</button> 
-                     <button onClick={() => dispatch(toRegisterOrSign(false))} className={`${!signOrRegister ? "bg-white   dark:bg-black dark:text-white text-black" : "bg-black hover:text-sky-500  "}  p-2 rounded transition-colors`}>Kayıt Ol</button>
+                     <button onClick={() => dispatch(toRegisterOrSign(true))} className={`${signOrRegister ? "bg-white   dark:bg-black dark:text-white text-black" : "bg-black hover:text-sky-500  "}  p-2 rounded transition-colors`}>{languages[language].auth.signIn}</button> 
+                     <button onClick={() => dispatch(toRegisterOrSign(false))} className={`${!signOrRegister ? "bg-white   dark:bg-black dark:text-white text-black" : "bg-black hover:text-sky-500  "}  p-2 rounded transition-colors`}>{languages[language].auth.register}</button>
                      </div>
               
                 {signOrRegister ? <SignUp /> : <Registry />}

@@ -18,34 +18,60 @@
             "İzlemeye Doyamayacağınız En İyi Oyun Kanalları",
             "RPG Oyunları ve Oyun Dünyasında Rol Yapma Oyunlarının Yeri"
         ],
-        "buttons" : {
-            "buy" : "Satın Al",
-            "steamWallet" : "STEAM CÜZDAN"
+        "buttons": {
+            "buy": "Satın Al",
+            "steamWallet": "STEAM CÜZDAN"
         },
-        "categories" : {
-            "topSeller" : "ÇOK SATANLAR",
-            "discounts" : "İNDİRİME GİRENLER",
-            "skinsHeader" : "ITEMLER & SKINLER"
+        "categories": {
+            "topSeller": "ÇOK SATANLAR",
+            "discounts": "İNDİRİME GİRENLER",
+            "skinsHeader": "ITEMLER & SKINLER"
         },
-        "footer" : {
-            "adverts" : "İLANLAR",
-            "accountSales" : "Hesap Satış",
-            "gameCash" : "Oyun Parası",
-            "helpCenter" : "YARDIM MERKEZİ",
-            "howDoIBuy" : "Nasıl Satın Alırım ?",
-            "payment" : "Ödeme İşlemleri",
-            "aboutPreOrder" : "Ön Sipariş Bilgilendirmesi",
-            "refundTerms" : "İptal & İade Koşulları",
-            "user" : "KULLANICI",
-            "signIn" : "Giriş Yap",
-            "register" : "Kayıt Ol",
-            "forgetPass" : "Şifremi Unuttum",
-            "contactUs" : "İletişim" ,
-            "aboutUs" : "Hakkımızda",
-            "membershipTerms" : "Üyelik Sözleşmesi",
-            "confirmationText" : "Rıza Onay Metni",
-            "electronicMsgConfirm" : "Elektronik İleti Onayı",
-            "reserved" : "Tüm Hakları Saklıdır."
+        "footer": {
+            "adverts": "İLANLAR",
+            "accountSales": "Hesap Satış",
+            "gameCash": "Oyun Parası",
+            "helpCenter": "YARDIM MERKEZİ",
+            "howDoIBuy": "Nasıl Satın Alırım ?",
+            "payment": "Ödeme İşlemleri",
+            "aboutPreOrder": "Ön Sipariş Bilgilendirmesi",
+            "refundTerms": "İptal & İade Koşulları",
+            "user": "KULLANICI",
+            "signIn": "Giriş Yap",
+            "register": "Kayıt Ol",
+            "forgetPass": "Şifremi Unuttum",
+            "contactUs": "İletişim",
+            "aboutUs": "Hakkımızda",
+            "membershipTerms": "Üyelik Sözleşmesi",
+            "confirmationText": "Rıza Onay Metni",
+            "electronicMsgConfirm": "Elektronik İleti Onayı",
+            "reserved": "Tüm Hakları Saklıdır."
+        },
+        "auth": {
+            "signIn": "Giriş Yap",
+            "register": "Kayıt Ol",
+            "reActiveLink": "Aktivasyon Kodum Gelmedi ",
+            "mainPageNav": "Ana Sayfa",
+            "userId": "Kullanıcı Adı",
+            "phoneNumber": "Cep No",
+            "nameLastName": "Ad Soyad",
+            "email": "E-Posta",
+            "reEmail": "E-Posta Tekrar",
+            "pass": "Şifre",
+            "rePass": "Şifre Tekrar",
+            "quickLogin": "Sosyal hesaplarınızdan birini kullanarak hızlı bir şekilde oturum açın",
+            "googleLogin": "Google ile Giriş Yap",
+            "facebookLogin": "Facebook ile Giriş Yap",
+            "steamLogin": "Steam ile Giriş Yap",
+            "discordLogin": "Discord ile Giriş Yap",
+            "orEmail": "Veya e-postanızı kullanın",
+            "forgotPassLink": "Şifrenizi Mi Unuttunuz ?",
+            "rememberMe": "Beni Hatırla",
+            "birthDay" : "Doğum Tarihi",
+            "signInRegister" : "Kayıt Ol / Giriş Yap",
+            "needMailForActive" : "Aktivasyon Kodunuzu Almak İçin Kayıt olduğunuz E-Posta adresinizi giriniz",
+            "submitButton" : "Gönder",
+            "passRequest" : "Şifre Sıfırlama İsteği Almak İçin Kayıt olduğunuz E-Posta adresinizi giriniz"
         }
     },
     "en_US": {
@@ -67,34 +93,62 @@
             "The Best Gaming Channels You Can't Get Enough of Watching",
             "RPG Games and Role Playing Games in the Game World"
         ],
-        "buttons" : {
-            "buy" : "Buy it",
-            "steamWallet" : "STEAM WALLET"
+        "buttons": {
+            "buy": "Buy it",
+            "steamWallet": "STEAM WALLET"
         },
-        "categories" : {
-            "topSeller" : "TOP SELLER",
-            "discounts" : "DISCOUNTS",
-            "skinsHeader" : "ITEMS & SKINS"
+        "categories": {
+            "topSeller": "TOP SELLER",
+            "discounts": "DISCOUNTS",
+            "skinsHeader": "ITEMS & SKINS"
         },
-        "footer" : {
-            "adverts" : "ADVERTS",
-            "accountSales" : "Account Sales",
-            "gameCash" : "Game Cash",
-            "helpCenter" : "Help Center",
-            "howDoIBuy" : "How Do I Buy ?",
-            "payment" : "Payment",
-            "aboutPreOrder" : "About Pre-Order",
-            "refundTerms" : "Refund Terms",
-            "user" : "User",
-            "signIn" : "Sign In",
-            "register" : "Register",
-            "forgetPass" : "Forget Password",
-            "contactUs" : "Contact Us",
-            "aboutUs" : "About Us",
-            "membershipTerms" : "Membership Terms",
-            "confirmationText" : "Confirmation Text",
-            "electronicMsgConfirm" : "Electronic Confirmation",
-            "reserved" : "All Rights Reserved." 
+        "footer": {
+            "adverts": "ADVERTS",
+            "accountSales": "Account Sales",
+            "gameCash": "Game Cash",
+            "helpCenter": "Help Center",
+            "howDoIBuy": "How Do I Buy ?",
+            "payment": "Payment",
+            "aboutPreOrder": "About Pre-Order",
+            "refundTerms": "Refund Terms",
+            "user": "User",
+            "signIn": "Sign In",
+            "register": "Register",
+            "forgetPass": "Forget Password",
+            "contactUs": "Contact Us",
+            "aboutUs": "About Us",
+            "membershipTerms": "Membership Terms",
+            "confirmationText": "Confirmation Text",
+            "electronicMsgConfirm": "Electronic Confirmation",
+            "reserved": "All Rights Reserved."
+           
+        },
+        "auth": {
+            "signIn": "Login",
+            "register": "Register",
+            "reActiveLink": "Activation code not received ",
+            "mainPageNav": "Home Page",
+            "userId": "User Name",
+            "phoneNumber": "Phone Number",
+            "nameLastName": "Name Lastname",
+            "email": "E-mail",
+            "reEmail": "E-Mail Repeat",
+            "pass": "Password",
+            "rePass": "Password Repeat",
+            "quickLogin": "Sign in quickly using your social accounts ",
+            "googleLogin": "Sign in With Google",
+            "facebookLogin": "Sign in With Facebook",
+            "steamLogin": "Sign in With Steam",
+            "discordLogin": "Sign in With Discord",
+            "orEmail": "Or Use Your E-mail",
+            "forgotPassLink": "Forgot Your Password ?",
+            "rememberMe": "Remember Me",
+            "birthDay" : "Birth Day",
+            "signInRegister" : "Register / Login",
+            "needMailForActive" : "Enter your registered e-mail address to receive your Activation Code",
+            "submitButton" : "Send",
+            "passRequest" : "Enter your registered e-mail address to receive a password reset request"
+            
         }
     }
 }
