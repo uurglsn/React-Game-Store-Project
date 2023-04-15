@@ -79,7 +79,7 @@ const Registry = () => {
                     register(values.email, values.pass)
                         .then((user) => {
                             console.log(user);
-                            navigate("/");
+                            navigate('/', { state: { success: true } });
                         })
                         .catch((error) => {
                             console.log(error);

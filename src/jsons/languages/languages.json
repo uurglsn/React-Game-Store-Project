@@ -96,7 +96,9 @@
             "passToLong": "Şifre En Fazla 30 Karakterden Oluşabilir",
             "passPair": "Şifreler Eşleşmiyor",
             "rePassRequired": "Tekrar Şifre Zorunlu",
-            "termsRequired" : "Üyelik Sözleşmesini Kabul Etmelisiniz"
+            "termsRequired" : "Üyelik Sözleşmesini Kabul Etmelisiniz",
+                "errorRegis" : "Kayıt Başarısız",
+                "successRegis" : "Kayıt Başarılı Ana Sayfaya Yönlendiriliyorsunuz"
         }
     },
     "en_US": {
@@ -196,7 +198,9 @@
             "passToLong": "Password Can Be Up To 30 Characters",
             "passPair": "Passwords Do Not Match",
             "rePassRequired": "Require Password Again",
-            "termsRequired" : "You need to accept the terms and conditions"
+            "termsRequired" : "You need to accept the terms and conditions",
+            "errorRegis" : "Registration Failed",
+            "successRegis" : "Registration Successful. You Are Redirected To Homepage"
         }
     }
 }
