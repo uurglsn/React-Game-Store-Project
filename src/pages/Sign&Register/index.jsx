@@ -13,7 +13,7 @@ const SignRegister = () => {
     const dispatch = useDispatch();
     const { signOrRegister, language } = useSelector((state) => state.appRedux);
     return (
-        <div className=' flex h-screen w-screen '>
+        <div className=' overflow-auto   max-h-screen flex  h-screen w-screen '>
 
             <div className=' font-mainFont  dark:from-sky-100 dark:to-teal-100 dark:text-black  text-sky-700 bg-gradient-to-br from-gray-700 via-gray-900 to-black    border-r-4 border-black  max-xl:w-full  w-1/2'>
 
@@ -33,7 +33,7 @@ const SignRegister = () => {
 
                 {signOrRegister ? <SignUp /> : <Registry />}
             </div>
-            <div className='  max-xl:hidden  w-1/2'><img src={backgroundImage} className='opacity-70   dark:opacity-100  w-full h-full  object-right  object-cover' ></img>
+            <div className=' overflow-auto   max-h-screen  max-xl:hidden  w-1/2'><img src={backgroundImage} className='opacity-70   dark:opacity-100  w-full h-full  object-right  object-cover' ></img>
             </div>
         </div>
     );

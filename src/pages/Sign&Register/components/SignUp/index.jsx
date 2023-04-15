@@ -17,22 +17,6 @@ const SignUp = () => {
                 <BsDoorClosedFill className='  max-sm:hidden col-span-2 text-2xl ' />
                 <label  htmlFor='input-group-1' className='col-span-2 text-2xl grid  max-sm:place-self-center '> {languages[language].auth.signIn} </label>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <p  className="max-sm:hidden col-span-2 text-sm overflow-hidden break-words ">{languages[language].auth.quickLogin}</p>
 
 

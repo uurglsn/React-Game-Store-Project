@@ -6,10 +6,13 @@ import * as Yup from "yup";
 import { Animated } from "react-animated-css";
 import languages from "../../../../jsons/languages/languages.json"
 import { useSelector } from "react-redux"
+import { register } from "../../../../firebase";
+import { useNavigate } from "react-router-dom";
 
 
 
 const Registry = () => {
+    const navigate = useNavigate();
     const { language } = useSelector((state) => state.appRedux);
     const SignupSchema = Yup.object().shape({
         userName: Yup.string()
@@ -49,7 +52,7 @@ const Registry = () => {
             .required(languages[language].registerErrors.rePassRequired)
             .oneOf([Yup.ref('pass'), null], languages[language].registerErrors.passPair),
         terms: Yup.bool()
-            .oneOf([true],languages[language].registerErrors.termsRequired ),
+            .oneOf([true], languages[language].registerErrors.termsRequired),
 
     });
     const initialValues = {
@@ -63,6 +66,7 @@ const Registry = () => {
         rePass: '',
         terms: false
     }
+
     return (
 
         <div >
@@ -71,20 +75,19 @@ const Registry = () => {
                 initialValues={initialValues}
                 validationSchema={SignupSchema}
 
-                onSubmit={(values, { setSubmitting }) => {
-
-                    setTimeout(() => {
-
-                        alert(JSON.stringify(values, null, 2));
-
-                        setSubmitting(false);
-
-                    }, 400);
-
+                onSubmit={(values) => {
+                    register(values.email, values.pass)
+                        .then((user) => {
+                            console.log(user);
+                            navigate("/");
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
                 }}
             >
                 {
-                    ({ errors, touched, handleSubmit, handleChange ,  isValid }) => (
+                    ({ errors, touched, handleSubmit, handleChange, isValid }) => (
 
 
                         <Form onSubmit={handleSubmit}>
