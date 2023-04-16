@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  , updateProfile} from "firebase/auth"
 const firebaseConfig = {
     apiKey: "AIzaSyDfrx28Y-dUPulV0trzlzCA4CuONA0vcfY",
     authDomain: "gamestore-63a72.firebaseapp.com",
@@ -10,10 +10,12 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth()
-export const register = async (email, password) => {
-    const { user } = await createUserWithEmailAndPassword(auth, email, password)
-    return user
-}
+export const register = async (email, password, name) => {
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(user, { displayName: name });
+    return user;
+  };
+  
 export const login = async (email, password) => {
     const { user } = await signInWithEmailAndPassword(auth, email, password)
     return user

@@ -1,6 +1,6 @@
 import backgroundImage from "./images/registerBackground.png"
 import { useSelector, useDispatch } from "react-redux";
-import { toRegisterOrSign } from "../../features/app/appSlice"
+import { toRegisterOrSign, loginIn } from "../../features/app/appSlice"
 import { Link } from "react-router-dom";
 import languages from "../../jsons/languages/languages.json"
 import { AiOutlineForm, AiOutlineUser, AiOutlinePhone } from "react-icons/ai"
@@ -11,9 +11,8 @@ import * as Yup from "yup";
 import { Animated } from "react-animated-css";
 import { register } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
-
-import { useState } from "react";
 import Login from "./components/Login";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const SignRegister = () => {
@@ -26,8 +25,7 @@ const SignRegister = () => {
             .required(languages[language].registerErrors.userNameRequired),
 
         phoneNumber: Yup.string()
-            .min(10, languages[language].registerErrors.phoneNumberError)
-            .max(10, languages[language].registerErrors.phoneNumberError)
+            .matches(/^[0-9]{10}$/, languages[language].registerErrors.phoneNumberError)
             .required(languages[language].registerErrors.phoneRequired),
 
         nameLastName: Yup.string()
@@ -73,11 +71,13 @@ const SignRegister = () => {
     }
     const dispatch = useDispatch();
 
-    const [successRegis, setSuccessRegis] = useState(false);
-    const [errorRegis, setErrorRegis] = useState(false)
     return (
         <div className=' overflow-auto   max-h-screen flex  h-screen w-screen '>
+            <Toaster
 
+                position="top-right"
+                reverseOrder={false}
+            />
             <div className=' font-mainFont  dark:from-sky-100 dark:to-teal-100 dark:text-black  text-sky-700 bg-gradient-to-br from-gray-700 via-gray-900 to-black    border-r-4 border-black  max-xl:w-full  w-1/2'>
 
                 <div className="flex     justify-around        m-10">
@@ -93,32 +93,23 @@ const SignRegister = () => {
                     <button onClick={() => dispatch(toRegisterOrSign(true))} className={`${signOrRegister ? "bg-white  dark:text-white   dark:bg-black  text-black" : "bg-black hover:text-sky-500  dark:hover:bg-white "}    dark:text-sky-500 p-2 rounded transition-colors`}>{languages[language].auth.signIn}</button>
                     <button onClick={() => dispatch(toRegisterOrSign(false))} className={`${!signOrRegister ? "bg-white dark:text-white     dark:bg-black  text-black" : "bg-black hover:text-sky-500  dark:hover:bg-white "}   dark:text-sky-500 p-2 rounded transition-colors`}>{languages[language].auth.register}</button>
                 </div>
-                {signOrRegister ? (<Login/>) : (<div >
+                {signOrRegister ? (<Login />) : (<div >
 
                     <Formik
                         initialValues={initialValues}
                         validationSchema={SignupSchema}
-
                         onSubmit={(values, { resetForm }) => {
-                            register(values.email, values.pass)
+                            register(values.email, values.pass, values.userName)
                                 .then((user) => {
-                                    setSuccessRegis(true);
-                                    console.log(user);
+                                    toast.success(languages[language].registerErrors.successRegis);
                                     resetForm();
                                     setTimeout(() => {
                                         navigate("/");
                                     }, 7000);
-                                    setTimeout(() => {
-                                        setSuccessRegis(false);
-                                    }, 5000);
-
                                 })
                                 .catch((error) => {
-                                    setErrorRegis(true);
-                                    console.log(error);
-                                    setTimeout(() => {
-                                        setErrorRegis(false);
-                                    }, 5000);
+                                    toast.error(languages[language].registerErrors.errorRegis);
+                                    console.log(error)
                                 });
                         }}
                     >
@@ -312,14 +303,7 @@ const SignRegister = () => {
 
 
                                         </div>
-                                        {successRegis ? (<Animated animationIn="fadeIn" animationOut="fadeOut" className=" xl:hidden z-50  p-4 flex   right-10  top-24 absolute  justify-center  col-span-2 mb-4 text-sm text-green-800 rounded-lg bg-green-50  dark:text-green-400"  >
-                                            {languages[language].registerErrors.successRegis}
-                                        </Animated>) : null}
 
-                                        {errorRegis ? (<Animated animationIn="fadeIn" animationOut="fadeOut" className=" xl:hidden z-50  p-4 flex    top-5  right-10 absolute  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-
-                                            {languages[language].registerErrors.errorRegis}
-                                        </Animated>) : null}
                                     </div>
                                 </Form>
 
@@ -340,18 +324,6 @@ const SignRegister = () => {
             </div>
             <div className='    max-xl:hidden  w-1/2'>
 
-
-
-                {successRegis ? (<Animated animationIn="fadeIn" animationOut="fadeOut" className=" z-50  p-4 flex   right-10 top-5 absolute  justify-center  col-span-2 mb-4 text-sm text-green-800 rounded-lg bg-green-50  dark:text-green-400"  >
-                    {languages[language].registerErrors.successRegis}
-                </Animated>) : null}
-
-
-
-                {errorRegis ? (<Animated animationIn="fadeIn" animationOut="fadeOut" className=" z-50  p-4 flex    top-5  right-10 absolute  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-
-                    {languages[language].registerErrors.errorRegis}
-                </Animated>) : null}
 
 
 

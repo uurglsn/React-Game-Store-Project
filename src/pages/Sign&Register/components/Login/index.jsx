@@ -4,15 +4,18 @@ import facebookLogo from "../../images/facebookLogo.png"
 import googleLogo from "../../images/googleLogo.png"
 import steamLogo from "../../images/steamLogo.png"
 import languages from "../../../../jsons/languages/languages.json"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import { Formik, Form } from "formik"
 import { useNavigate } from "react-router-dom"
 import { login } from "../../../../config/firebase"
+import toast, { Toaster } from 'react-hot-toast';
+import { loginIn } from "../../../../features/app/appSlice"
 
 const Login = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { language } = useSelector((state) => state.appRedux);
+    const { language  , user} = useSelector((state) => state.appRedux);
     const loginInitalValues = {
         email: "",
         pass: ""
@@ -24,17 +27,17 @@ const Login = () => {
             onSubmit={(values) => {
                 login(values.email, values.pass)
                     .then((user) => {
-
-                        console.log(user);
-
+                        toast.success("Giriş Başarılı Yönlendiriliyorsunuz")
+                        dispatch(loginIn(user))
+                        // console.log(user);
                         setTimeout(() => {
                             navigate("/");
                         }, 7000);
 
                     })
                     .catch((error) => {
-                        console.log(error);
-
+                        toast.error("Giriş Başarısız")
+                        // console.log(error);
                     });
             }}
         >
@@ -43,7 +46,11 @@ const Login = () => {
 
 
                     <Form onSubmit={handleSubmit}>
+                        <Toaster
 
+                            position="top-right"
+                            reverseOrder={false}
+                        />
                         <div className='flex justify-center '>
                             <div className='grid max-sm:gap-x-3  gap-y-6  gap-x-16    grid-cols-2'>
                                 <BsDoorClosedFill className='  max-sm:hidden col-span-2 text-2xl ' />
