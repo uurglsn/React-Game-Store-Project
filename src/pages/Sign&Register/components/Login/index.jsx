@@ -15,7 +15,7 @@ import { loginIn } from "../../../../features/app/appSlice"
 const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { language  , user} = useSelector((state) => state.appRedux);
+    const { language } = useSelector((state) => state.appRedux);
     const loginInitalValues = {
         email: "",
         pass: ""
@@ -56,10 +56,10 @@ const Login = () => {
                                 <BsDoorClosedFill className='  max-sm:hidden col-span-2 text-2xl ' />
                                 <label htmlFor='input-group-1' className='col-span-2 text-2xl grid  max-sm:place-self-center '> {languages[language].auth.signIn} </label>
                                 <p className="max-sm:hidden col-span-2 text-sm overflow-hidden break-words ">{languages[language].auth.quickLogin}</p>
-                                <button className='bg-black transition-colors  hover:bg-white border-2 border-black  hover:border-sky-500   group       p-3         rounded   flex   items-center   justify-center    '>  <img className='mx-3  w-7' src={googleLogo} />    <p className='  max-sm:hidden  text-sm  dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.googleLogin} </p>     </button>
-                                <button className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      p-3    rounded   flex   items-center  justify-center       '>  <img className='  mx-3 w-7' src={facebookLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.facebookLogin} </p>     </button>
-                                <button className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group    p-3     rounded   flex   items-center    justify-center   '>  <img className=' mx-3  w-7 ' src={steamLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.steamLogin} </p>     </button>
-                                <button className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      gap-3 p-3   rounded   flex   items-center   justify-center     '>  <img className='   w-7' src={discordLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.discordLogin} </p>     </button>
+                                <button className='bg-black transition-colors  hover:bg-white border-2 border-black  hover:border-sky-500   group       p-3         rounded   flex   items-center   justify-center    '>  <img alt={[]} className='mx-3  w-7' src={googleLogo} />    <p className='  max-sm:hidden  text-sm  dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.googleLogin} </p>     </button>
+                                <button className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      p-3    rounded   flex   items-center  justify-center       '>  <img alt={[]} className='  mx-3 w-7' src={facebookLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.facebookLogin} </p>     </button>
+                                <button className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group    p-3     rounded   flex   items-center    justify-center   '>  <img alt={[]} className=' mx-3  w-7 ' src={steamLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.steamLogin} </p>     </button>
+                                <button className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      gap-3 p-3   rounded   flex   items-center   justify-center     '>  <img alt={[]} className='   w-7' src={discordLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.discordLogin} </p>     </button>
 
 
 

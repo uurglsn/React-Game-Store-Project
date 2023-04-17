@@ -2,18 +2,31 @@ import { AiOutlineForm, AiOutlineUser, AiOutlinePhone } from "react-icons/ai"
 import { GiConsoleController } from "react-icons/gi"
 import { FaBirthdayCake } from "react-icons/fa"
 import { Formik, Field, Form } from 'formik';
-import * as Yup from "yup";
 import { Animated } from "react-animated-css";
+import { register } from "../../../../config/firebase";
 import languages from "../../../../jsons/languages/languages.json"
-import { useSelector } from "react-redux"
-import { register } from "../../../../firebase";
+import toast  from 'react-hot-toast';
+import * as Yup from "yup";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+const Register = () => {
 
 
 
-const Registry = () => {
+
+
+
+
+
+    const {  language } = useSelector((state) => state.appRedux);
     const navigate = useNavigate();
-    const { language } = useSelector((state) => state.appRedux);
+
+
+
+
+
+
+
     const SignupSchema = Yup.object().shape({
         userName: Yup.string()
             .min(3, languages[language].registerErrors.userNameTooShort)
@@ -21,8 +34,7 @@ const Registry = () => {
             .required(languages[language].registerErrors.userNameRequired),
 
         phoneNumber: Yup.string()
-            .min(10, languages[language].registerErrors.phoneNumberError)
-            .max(10, languages[language].registerErrors.phoneNumberError)
+            .matches(/^[0-9]{10}$/, languages[language].registerErrors.phoneNumberError)
             .required(languages[language].registerErrors.phoneRequired),
 
         nameLastName: Yup.string()
@@ -67,22 +79,25 @@ const Registry = () => {
         terms: false
     }
 
-    return (
 
+    return (
         <div >
 
             <Formik
                 initialValues={initialValues}
                 validationSchema={SignupSchema}
-
-                onSubmit={(values) => {
-                    register(values.email, values.pass)
-                        .then((user) => {
-                            console.log(user);
-                            navigate('/', { state: { success: true } });
+                onSubmit={(values, { resetForm }) => {
+                    register(values.email, values.pass, values.userName)
+                        .then((success) => {
+                            toast.success(languages[language].registerErrors.successRegis);
+                            resetForm();
+                            setTimeout(() => {
+                                navigate("/");
+                            }, 7000);
                         })
                         .catch((error) => {
-                            console.log(error);
+                            toast.error(languages[language].registerErrors.errorRegis);
+                            console.log(error)
                         });
                 }}
             >
@@ -153,7 +168,7 @@ const Registry = () => {
                                             onChange={handleChange}
                                             type="text"
                                             id="input-group-1"
-                                            className=" bg-black    border-sky-500 border dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none"
+                                            className={` ${errors.userName && touched.userName ? "border-red-500" : ''} bg-black  border-2   border-sky-500  dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none`}
                                             placeholder={languages[language].auth.userId} />
 
                                     </div>
@@ -166,7 +181,7 @@ const Registry = () => {
                                             onChange={handleChange}
                                             type="text"
                                             id="input-group-1"
-                                            className=" bg-black border-sky-500 border dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none"
+                                            className={` ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : ''} bg-black  border-2   border-sky-500  dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none`}
                                             placeholder={languages[language].auth.phoneNumber} />
                                     </div>
 
@@ -178,7 +193,7 @@ const Registry = () => {
                                             onChange={handleChange}
                                             type="text"
                                             id="input-group-1"
-                                            className=" bg-black border-sky-500 border dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none"
+                                            className={` ${errors.nameLastName && touched.nameLastName ? "border-red-500" : ''} bg-black  border-2   border-sky-500  dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none`}
                                             placeholder={languages[language].auth.nameLastName} />
                                     </div>
                                     <div className="relative max-sm:col-span-2   col-span-1"><div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -189,7 +204,7 @@ const Registry = () => {
                                             onChange={handleChange}
                                             type="date"
                                             id="input-group-1"
-                                            className=" bg-black border-sky-500 border dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none"
+                                            className={` ${errors.birthDay && touched.birthDay ? "border-red-500" : ''} bg-black  border-2   border-sky-500  dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none`}
                                             placeholder={languages[language].auth.birthDay} />
                                     </div>
                                     <div className="relative max-sm:col-span-2   col-span-1">
@@ -206,7 +221,7 @@ const Registry = () => {
                                             onChange={handleChange}
                                             type="email"
                                             id="input-group-1"
-                                            className="bg-black border-sky-500 border  dark:placeholder:text-white dark:text-white  placeholder:text-sky-700 hover:bg-gray-950   hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700    transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5 outline-none"
+                                            className={` ${errors.email && touched.email ? "border-red-500" : ''} bg-black  border-2   border-sky-500  dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none`}
                                             placeholder={languages[language].auth.email} />
                                     </div>
                                     <div className="relative max-sm:col-span-2   col-span-1">
@@ -223,7 +238,7 @@ const Registry = () => {
                                             onChange={handleChange}
                                             type="email"
                                             id="input-group-1"
-                                            className="bg-black border-sky-500 border  dark:placeholder:text-white dark:text-white  placeholder:text-sky-700 hover:bg-gray-950   hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700    transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5 outline-none"
+                                            className={` ${errors.reEmail && touched.reEmail ? "border-red-500" : ''} bg-black  border-2   border-sky-500  dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none`}
                                             placeholder={languages[language].auth.reEmail} />
                                     </div>
                                     <div className="relative max-sm:col-span-2   col-span-1">
@@ -239,7 +254,7 @@ const Registry = () => {
                                             onChange={handleChange}
                                             type="password"
                                             id="input-group-1"
-                                            className=" bg-black border-sky-500 border dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none"
+                                            className={` ${errors.pass && touched.pass ? "border-red-500" : ''} bg-black  border-2   border-sky-500  dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none`}
                                             placeholder={languages[language].auth.pass} />
                                     </div>
                                     <div className="relative max-sm:col-span-2   col-span-1">
@@ -256,7 +271,7 @@ const Registry = () => {
                                             onChange={handleChange}
                                             type="password"
                                             id="input-group-1"
-                                            className=" bg-black border-sky-500 border dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none"
+                                            className={` ${errors.rePass && touched.rePass ? "border-red-500" : ''} bg-black  border-2   border-sky-500  dark:placeholder:text-white dark:text-white   placeholder:text-sky-700 hover:bg-gray-950    hover:text-sky-700 focus:bg-gray-950 focus:text-sky-700   transition-colors text-sm rounded-lg   block w-full pl-10 p-2.5      outline-none`}
                                             placeholder={languages[language].auth.rePass} />
                                     </div>
                                     <label htmlFor='terms' className=' border-2 border-black  hover:border-sky-500  text-sm gap- text-center bg-black    flex items-center justify-center w-64  max-sm:w-40  p-3 py-3     hover:bg-white hover   dark:hover:text-black hover:text-black  transition-colors rounded-xl  col-span-1 dark:text-white place-self-center'>
@@ -292,10 +307,7 @@ const Registry = () => {
 
 
         </div >
-
-
-
     );
 }
 
-export default Registry;
+export default Register;

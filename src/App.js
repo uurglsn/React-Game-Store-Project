@@ -3,23 +3,24 @@ import { Route, Routes } from "react-router-dom";
 
 //Components
 
-import Layout from "./layout";
 import Home from "./pages/home";
-import Register from "./pages/Sign&Register/"
+import Auth from "./pages/Sign&Register/"
 import ReActiveCode from "./pages/ReActiveCode";
 import ForgotPass from "./pages/forgotPass";
+import Profile from "./pages/profile"
 
 const App = () => {
   return (
     <>
-      <Layout>
+      <div className='font-mainFont  dark:from-sky-100 dark:to-teal-100 dark:text-black  text-sky-700 bg-gradient-to-br from-gray-700 via-gray-900 to-black'>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/reactive" element={<ReActiveCode />} />
           <Route path="/forgot" element={<ForgotPass />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
-      </Layout>
+      </div>
     </>
   );
 }

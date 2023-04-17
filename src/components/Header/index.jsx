@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeLanguage, toRegisterOrSign, loginOut } from "../../features/app/appSlice";
 // React Icons
 import { FaNewspaper, FaHeadphones } from "react-icons/fa"
-import { MdPayments, MdQrCode, MdVideogameAsset, MdOutlineHelp, MdOutlineExitToApp, MdOutlineAccountBox, MdOutlineManageAccounts } from "react-icons/md"
+import { MdPayments, MdQrCode, MdVideogameAsset, MdOutlineHelp, MdOutlineExitToApp, MdOutlineManageAccounts } from "react-icons/md"
 import { HiTranslate, HiSun } from "react-icons/hi";
 import { CgProfile } from "react-icons/cg";
 import { BsTwitch, BsFillKeyFill, BsFillMoonFill, BsDoorClosedFill, BsArchive } from "react-icons/bs"
@@ -151,8 +151,8 @@ const Header = () => {
                         <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
                             <Menu.Items className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${theme ? "bg-gradient-to-r from-sky-100 to-teal-100  dark:text-sky-500" : "bg-gradient-to-br from-gray-700 via-gray-900 to-black  "}`}>
                                 <div className={`py-1`}>
-                                    <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/register" onClick={() => dispatch(toRegisterOrSign(true))} className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
-                                    <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/register" onClick={() => dispatch(toRegisterOrSign(false))} className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
+                                    <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" onClick={() => dispatch(toRegisterOrSign(true))} className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
+                                    <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" onClick={() => dispatch(toRegisterOrSign(false))} className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
                         </Transition>
                     </Menu>
 
@@ -179,7 +179,7 @@ const Header = () => {
 
 
                                 </Menu.Item>
-                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><div className='block w-full h-full px-4 py-2 text-sm'><MdOutlineManageAccounts /><p className={`pl-3  dark:text-black dark:hover:text-sky-500 font-extrabold transition-colors `}>Hesabım</p></div></Menu.Item>
+                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to='/profile' className='block w-full h-full px-4 py-2 text-sm'><MdOutlineManageAccounts /><p className={`pl-3  dark:text-black dark:hover:text-sky-500 font-extrabold transition-colors `}>Hesabım</p></Link></Menu.Item>
                                 <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><div className='block w-full h-full px-4 py-2 text-sm'><BsArchive /><p className={`pl-3  dark:text-black dark:hover:text-sky-500 font-extrabold transition-colors `}>Siparişlerim</p></div></Menu.Item>
                                 <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><div className='block w-full h-full px-4 py-2 text-sm'><BiSupport /><p className={`pl-3  dark:text-black dark:hover:text-sky-500 font-extrabold transition-colors `}>Destek</p></div></Menu.Item>
                                 <Menu.Item className={` cursor-pointer hover:text-sky-500 transition-colors flex items-center`}><div onClick={() => handleLogout()} className="block w-full h-full px-4 py-2 text-sm" > <MdOutlineExitToApp /> <p className={`pl-3  dark:text-black dark:hover:text-sky-500 font-extrabold transition-colors `}>Çıkış Yap</p></div></Menu.Item></div></Menu.Items>
@@ -280,8 +280,8 @@ const Header = () => {
                     <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
                         <Menu.Items className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${theme ? "bg-gradient-to-r from-sky-100 to-teal-100  dark:text-sky-500" : "bg-gradient-to-br from-gray-700 via-gray-900 to-black  "}`}>
                             <div className={`py-1`}>
-                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/register" onClick={() => dispatch(toRegisterOrSign(true))} className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold `}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
-                                <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/register" onClick={() => dispatch(toRegisterOrSign(false))} className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold `}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
+                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" onClick={() => dispatch(toRegisterOrSign(true))} className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold `}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
+                                <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" onClick={() => dispatch(toRegisterOrSign(false))} className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold `}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
                     </Transition>
                 </Menu>
 

@@ -18,28 +18,28 @@ const Index = () => {
             <div className="grid grid-cols-5 max-lg:grid-cols-2    mt-10        mx-auto  gap-10    w-5/6   h-[750px]">
                 <div style={{ backgroundImage: `url(${csGoSkinIMG})` }} className=" group flex justify-center   dark:opacity-100   transition duration-300 ease-in-out hover:scale-110  hover:cursor-pointer   shadow-skinCategories  opacity-70 hover:opacity-100    rounded-3xl     bg-center bg-cover col-span-2 row-span-2">
                     <div className=" hidden   group-hover:flex     w-4/6 flex-col justify-center justify-items-center transition-all">
-                        <img className=" transition-all  w-full group-hover:animate-pulse " src={csgoLogo}  />
+                        <img alt={[]} className=" transition-all  w-full group-hover:animate-pulse " src={csgoLogo}  />
                     </div>
 
                 </div>
                 <div style={{ backgroundImage: `url(${pubgSkinIMG})`, }} className="  group flex justify-center   dark:opacity-100 shadow-skinCategories  duration-300 ease-in-out hover:scale-110 hover:opacity-100 transition-all hover:cursor-pointer opacity-50 rounded-3xl bg-center  bg-cover col-span-2">
                     <div className="   invisible group-hover:visible flex    w-56 flex-col justify-center justify-items-center transition-all">
-                        <img className=" transition-all  w-full group-hover:animate-pulse" src={pubgLogo} />
+                        <img alt={[]} className=" transition-all  w-full group-hover:animate-pulse" src={pubgLogo} />
                     </div>
                 </div>
                 <div style={{ backgroundImage: `url(${dotaSkinIMG})`, }} className="  group  flex justify-center  dark:opacity-100 shadow-skinCategories  duration-300 ease-in-out hover:scale-110 hover:opacity-100 transition-all hover:cursor-pointer opacity-50 rounded-3xl  bg-center bg-cover col-span-1">
                 <div className=" invisible group-hover:visible flex   w-56 flex-col justify-center justify-items-center transition-all">
-                        <img className="  transition-all  w-full group-hover:animate-pulse" src={dotaLogo} />
+                        <img alt={[]} className="  transition-all  w-full group-hover:animate-pulse" src={dotaLogo} />
                     </div>
                 </div>
                 <div style={{ backgroundImage: `url(${riseOnlineIMG})`, }} className="  group  flex justify-center  dark:opacity-100 shadow-skinCategories  duration-300 ease-in-out hover:scale-110 hover:opacity-100 transition-all hover:cursor-pointer opacity-50 rounded-3xl  bg-center bg-cover col-span-1">
                 <div className=" invisible group-hover:visible flex   w-56 flex-col justify-center justify-items-center transition-all">
-                        <img className="  transition-all  w-full group-hover:animate-pulse" src={riseOnlineLogo} />
+                        <img alt={[]} className="  transition-all  w-full group-hover:animate-pulse" src={riseOnlineLogo} />
                     </div>
                 </div>
                 <div style={{ backgroundImage: `url(${rustSkinIMG})`, }} className="  group  flex justify-center  dark:opacity-100 shadow-skinCategories  duration-300 ease-in-out hover:scale-110 hover:opacity-100 transition-all hover:cursor-pointer opacity-50 rounded-3xl  bg-center bg-cover col-span-2">
                 <div className=" invisible group-hover:visible flex   w-56 flex-col justify-center justify-items-center transition-all">
-                        <img className="  transition-all  w-full group-hover:animate-pulse" src={rustLogo} />
+                        <img alt={[]} className="  transition-all  w-full group-hover:animate-pulse" src={rustLogo} />
                     </div>
                 </div>
             </div>

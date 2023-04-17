@@ -1,17 +1,20 @@
 
 import { FiSend } from "react-icons/fi"
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
 import languages from "../../jsons/languages/languages.json"
 import { useSelector } from "react-redux";
 const ReActiveCode = () => {
+
     const { language } = useSelector((state) => state.appRedux);
     const [captchaIsDone, setCaptchaIsDone] = useState(false)
     const captchaKey = "6Lf0nIolAAAAACAYd9FYx4oSUdm-honHK20bdq49"
     const onChange = () => {
         setCaptchaIsDone(true)
     }
+
+    
     return (
             <div className=' flex h-screen w-screen '>
                 <div className=' font-mainFont  dark:from-sky-100 dark:to-teal-100 dark:text-black  text-sky-700 bg-gradient-to-br from-gray-700 via-gray-900 to-black    border-r-4 border-black w-full '>
