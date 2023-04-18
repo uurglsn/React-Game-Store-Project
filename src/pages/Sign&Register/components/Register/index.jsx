@@ -3,9 +3,9 @@ import { GiConsoleController } from "react-icons/gi"
 import { FaBirthdayCake } from "react-icons/fa"
 import { Formik, Field, Form } from 'formik';
 import { Animated } from "react-animated-css";
-import { register } from "../../../../config/firebase";
+import { register } from "../../../../firebase/firebase";
 import languages from "../../../../jsons/languages/languages.json"
-import toast  from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import * as Yup from "yup";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ const Register = () => {
 
 
 
-    const {  language } = useSelector((state) => state.appRedux);
+    const { language } = useSelector((state) => state.theme);
     const navigate = useNavigate();
 
 
@@ -87,7 +87,7 @@ const Register = () => {
                 initialValues={initialValues}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { resetForm }) => {
-                    register(values.email, values.pass, values.userName)
+                    register(values.email, values.pass, values.userName, values.phoneNumber)
                         .then((success) => {
                             toast.success(languages[language].registerErrors.successRegis);
                             resetForm();
@@ -117,47 +117,19 @@ const Register = () => {
 
                                     <AiOutlineForm className='  max-sm:hidden col-span-2 text-2xl ' />
                                     <label htmlFor="input-group-1" className='col-span-2 text-2xl grid  max-sm:place-self-center '> {languages[language].auth.register} </label>
-                                    {
-                                        errors.userName && touched.userName ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="  p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.userName}        </Animated>) : ""}
-                                    {
-                                        errors.phoneNumber && touched.phoneNumber ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.phoneNumber}        </Animated>) : ""}
-                                    {
-                                        errors.nameLastName && touched.nameLastName ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="  p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.nameLastName}        </Animated>) : ""}
-
-
-                                    {
-                                        errors.birthDay && touched.birthDay ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="  p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.birthDay}        </Animated>) : ""}
-                                    {
-                                        errors.email && touched.email ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="  p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.email}        </Animated>) : ""}
-
-                                    {
-                                        errors.reEmail && touched.reEmail ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="  p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.reEmail}        </Animated>) : ""}
-                                    {
-                                        errors.pass && touched.pass ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="  p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.pass}        </Animated>) : ""}
-
-                                    {
-                                        errors.rePass && touched.rePass ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="  p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.rePass}        </Animated>) : ""}
-                                    {
-                                        errors.terms && touched.terms ?
-                                            (<Animated animationIn="fadeIn" animationOut="fadeOut" className="  p-4 flex  justify-center  col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400"  >
-                                                {errors.terms}        </Animated>) : ""}
-
+                                    
+                                    {Object.keys(initialValues).map((key) => {
+                                        return errors[key] && touched[key] ? (
+                                            <Animated
+                                                key={key}
+                                                animationIn="fadeIn"
+                                                animationOut="fadeOut"
+                                                className="p-4 flex justify-center col-span-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400"
+                                            >
+                                                {errors[key]}
+                                            </Animated>
+                                        ) : null;
+                                    })}
 
                                     <div className="relative max-sm:col-span-2   col-span-1">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">

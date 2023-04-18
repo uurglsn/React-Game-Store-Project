@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import languages from "../../jsons/languages/languages.json"
 
 const Announcement = () => {
-    const { language, user } = useSelector((state) => state.appRedux);
+    const { language } = useSelector((state) => state.theme);
 
     const [announceIndex, setAnnounceIndex] = useState(0);
     const [isVisible, setIsVisible] = useState(true);
@@ -42,8 +42,8 @@ const Announcement = () => {
                 </Link>
                 <IoIosCloseCircle className='hover:text-sky-500 transition-colors cursor-pointer mr-16' onClick={handleCloseClick} />
             </div>
-            <div className='flex justify-center'>
-            </div>
+
+
         </div>
 
     );

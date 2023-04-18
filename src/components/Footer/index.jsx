@@ -3,7 +3,7 @@ import { BsFacebook, BsDiscord, BsInstagram, BsTwitter, BsYoutube } from "react-
 import languages from "../../jsons/languages/languages.json"
 import { useSelector } from "react-redux";
 const Footer = () => {
-    const { language } = useSelector((state) => state.appRedux);
+    const { language } = useSelector((state) => state.theme);
     return (
 
         <footer className=" mx-16">

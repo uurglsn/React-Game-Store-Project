@@ -23,7 +23,7 @@ import { useSelector } from "react-redux";
 
 
 const Discount = () => {
-    const { language } = useSelector((state) => state.appRedux);
+    const { language } = useSelector((state) => state.theme);
     return (
         <>
             <h2 className="text-center  mt-10  text-2xl">{languages[language].categories.discounts}</h2>

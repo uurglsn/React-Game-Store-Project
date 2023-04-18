@@ -8,7 +8,7 @@ import riotGamesLogo from "./images/riotGames_logo.jpg"
 import spotifyLogo from "./images/spotify_logo.jpg"
 
 const TopSeller = () => {
-    const { language } = useSelector((state) => state.appRedux);
+    const { language } = useSelector((state) => state.theme);
     return (
         <>
             <h2 className="text-center  mt-10  text-2xl">{languages[language].categories.topSeller}</h2>

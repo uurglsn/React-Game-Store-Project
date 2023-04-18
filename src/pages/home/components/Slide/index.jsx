@@ -27,7 +27,7 @@ const properties = {
 
 
 const Index = () => {
-  const { language } = useSelector((state) => state.appRedux);
+  const { language } = useSelector((state) => state.theme);
   return (
 
     <Slide   {...properties}>

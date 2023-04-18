@@ -4,7 +4,9 @@ import Epin from "./components/Epin";
 import Discount from "./components/Discount";
 import Skin from "./components/Skin";
 import HomeLayout from "./layout";
+
 const Home = () => {
+    
     return (
         <>
             <HomeLayout>

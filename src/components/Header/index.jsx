@@ -5,7 +5,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react'
 // Redux Toolkit React Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { changeLanguage, toRegisterOrSign, loginOut } from "../../features/app/appSlice";
+import { changeLanguage, toRegisterOrSign } from "../../features/theme/themeSlice";
+import { loginOut } from "../../features/auth/authSlice";
 // React Icons
 import { FaNewspaper, FaHeadphones } from "react-icons/fa"
 import { MdPayments, MdQrCode, MdVideogameAsset, MdOutlineHelp, MdOutlineExitToApp, MdOutlineManageAccounts } from "react-icons/md"
@@ -18,7 +19,7 @@ import { BiSupport } from "react-icons/bi"
 // LanuageJSON Logo ReactCountryFlag
 import languages from "../../jsons/languages/languages.json"
 import ReactCountryFlag from "react-country-flag"
-import { logout } from "../../config/firebase"
+import { logout } from "../../firebase/firebase"
 
 
 
@@ -58,7 +59,8 @@ const Header = () => {
     const toggleTheme = () => {
         setTheme(!theme);
     }
-    const { language, user } = useSelector((state) => state.appRedux);
+    const { language } = useSelector((state) => state.theme);
+    const { user } = useSelector((state) => state.auth);
     const [showSidebar, setShowSidebar] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
@@ -134,12 +136,9 @@ const Header = () => {
             </nav>
 
 
-            {console.log(user)}
-
-
             <div className="flex items-center mr-16 max-xl:mr-4  gap-x-3">
 
-
+                {console.log(user)}
 
                 {!user ? (
                     <Menu as="div" className="relative max-lg:hidden dark:text-black   inline-block   z-50   text-left">

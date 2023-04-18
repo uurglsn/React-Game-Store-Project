@@ -1,6 +1,6 @@
 import backgroundImage from "./images/registerBackground.png"
 import { useSelector, useDispatch } from "react-redux";
-import { toRegisterOrSign } from "../../features/app/appSlice"
+import { toRegisterOrSign } from "../../features/theme/themeSlice"
 import { Link } from "react-router-dom";
 import languages from "../../jsons/languages/languages.json"
 
@@ -8,32 +8,27 @@ import Login from "./components/Login";
 import Register from "./components/Register"
 
 import { useNavigate } from "react-router-dom";
-
-import { Toaster } from 'react-hot-toast';
 import { useEffect } from "react";
 
 const SignRegister = () => {
-    const { signOrRegister, language, user } = useSelector((state) => state.appRedux);
+    const { signOrRegister, language } = useSelector((state) => state.theme);
+    const { user } = useSelector((state) => state.auth);
     const navigate = useNavigate();
 
     useEffect(() => {
         if (user || localStorage.getItem("user")) {
-            navigate("/");
+                navigate("/");
         }
-    }, [navigate , user]);
+    }, [navigate, user]);
 
 
     const dispatch = useDispatch();
 
     return (
         <div className=' overflow-auto   max-h-screen flex  h-screen w-screen '>
-            <Toaster position="top-right" reverseOrder={false} />
             <div className=' font-mainFont  dark:from-sky-100 dark:to-teal-100 dark:text-black  text-sky-700 bg-gradient-to-br from-gray-700 via-gray-900 to-black    border-r-4 border-black  max-xl:w-full  w-1/2'>
 
                 <div className="flex     justify-around        m-10">
-
-
-                    <Link to="/reactive" className=" text-center hover:text-sky-500 transition-colors">{languages[language].auth.reActiveLink} </Link>
                     <Link to="" className=" text-center hover:text-sky-500 transition-colors">{languages[language].auth.membershipTerms} </Link>
                     <Link className=" text-center hover:text-sky-500 transition-colors" to="/">{languages[language].auth.mainPageNav}</Link>
 

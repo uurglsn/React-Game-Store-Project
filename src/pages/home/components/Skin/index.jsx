@@ -11,7 +11,7 @@ import riseOnlineLogo from "./images/riseonlineLogo.png"
 import languages from "../../../../jsons/languages/languages.json"
 import { useSelector } from "react-redux";
 const Index = () => {
-    const { language } = useSelector((state) => state.appRedux);
+    const { language } = useSelector((state) => state.theme);
     return (
         <>
             <h1 className=" flex justify-center  text-3xl  mt-16">{languages[language].categories.skinsHeader}</h1>
