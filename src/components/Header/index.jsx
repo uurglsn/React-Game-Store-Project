@@ -19,7 +19,7 @@ import { BiSupport } from "react-icons/bi"
 // LanuageJSON Logo ReactCountryFlag
 import languages from "../../jsons/languages/languages.json"
 import ReactCountryFlag from "react-country-flag"
-import { logout } from "../../firebase/firebase"
+import { logout } from "../../firebase/auth"
 
 
 
@@ -34,10 +34,6 @@ const Header = () => {
             replace: true
         })
     }
-
-
-
-
 
 
 

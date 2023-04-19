@@ -1,5 +1,5 @@
 // import backgroundImage from "./images/background.jpg"
-// import profilePhoto from "./images/profile.jpeg"
+import profilePhoto from "./images/profile.jpeg"
 // import { Link } from "react-router-dom";
 // import { BiLogOutCircle } from "react-icons/bi"
 // import { CgProfile, CgShoppingCart } from "react-icons/cg"
@@ -11,20 +11,22 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { currentEmailVerification, update, auth, updatePass } from "../../firebase/firebase";
+import { currentEmailVerification, update, auth, updatePass, firestore, emailUpdate } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { loginIn } from "../../features/auth/authSlice";
 import Modal from "./components/modal";
-
+import { collection, query, where, getDocs } from 'firebase/firestore';
 const Profile = () => {
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth);
     const localStorageUser = JSON.parse(localStorage.getItem("user"))
     const navigate = useNavigate()
-    const [displayName, setnewDisplayName] = useState(user.displayName || auth.currentUser.displayName)
-    const [avatar, setAvatar] = useState(user.photoURL || auth.currentUser.photoURL)
+    const [displayName, setnewDisplayName] = useState(user.displayName || '')
+    const [avatar, setAvatar] = useState(user.photoURL || '')
     const [newPass, setNewPass] = useState('')
+    const [newEmail, setNewEmail] = useState('')
     let [isOpen, setIsOpen] = useState(false)
+    const [userData, setUserData] = useState(null);
     function closeModal() {
         setIsOpen(false)
     }
@@ -38,6 +40,31 @@ const Profile = () => {
             navigate("/");
         }
     }, [localStorageUser, user, navigate]);
+
+
+
+    useEffect(() => {
+
+        const getUserData = async () => {
+            const usersCollection = collection(firestore, 'users');
+            const userQuery = query(usersCollection, where('userId', '==', user.uid));
+            const userSnapshot = await getDocs(userQuery);
+            if (!userSnapshot.empty) {
+                setUserData(userSnapshot.docs[0].data());
+            }
+        }
+        if (user) {
+            getUserData();
+        }
+    }, [user]);
+
+
+
+
+
+
+
+
     const handleVerification = () => {
         currentEmailVerification()
             .then(() => {
@@ -59,10 +86,27 @@ const Profile = () => {
                 toast.error('hata')
             })
     }
+
+
+    const handleEmail = async (e) => {
+        e.preventDefault()
+        await emailUpdate(newEmail)
+        .then(() => {
+            dispatch(loginIn(auth.currentUser))
+            toast.success("Yeni Email Adresinize onay geldi ")
+        }).catch((error) => {
+            console.error(error)
+        })
+}
+
+
+
+
     const updatePassHandle = async () => {
         await updatePass(newPass)
             .then((res) => {
-                if (newPass == '') {
+                setNewPass('')
+                if (newPass === '') {
                     toast.error('HAYIRDIR')
                 } else {
                     toast.success('parola güncellendi')
@@ -80,6 +124,11 @@ const Profile = () => {
 
             })
     }
+
+
+
+
+
     return (
 
         // <div className=' overflow-auto   max-h-screen flex  h-screen w-screen  '>
@@ -91,7 +140,7 @@ const Profile = () => {
         //             </div>
         //             {newPass}
         //             <div className="flex gap-1 pt-6 items-center flex-col">
-        //                 {user.photoURL ? <img alt={[]} className=" w-32 h-32       rounded-full " src={user.photoURL} /> : <img alt={[]} className=" w-32 h-32       rounded-full " src={profilePhoto} />}
+        //            
 
         //                 <p className="mx-auto">  {user.email}</p>
         //                 <p className="mx-auto text-sm  mb-4">  {user.displayName}</p>
@@ -118,15 +167,32 @@ const Profile = () => {
         //     </div>
         // </div>
         <div className=" h-screen flex flex-col">
+                 {user.photoURL ? <img alt={[]} className=" w-32 h-32       rounded-full " src={user.photoURL} /> : <img alt={[]} className=" w-32 h-32       rounded-full " src={profilePhoto} />}
             <Modal isOpen={isOpen} closeModal={closeModal} setIsOpen={setIsOpen} />
             <button onClick={handleVerification} className="bg-dark rounded-xl"> Doğrulama Maili</button>
             <input type="text" onChange={(e) => setnewDisplayName(e.target.value)} />
             <button onClick={profileUpdate}>Kullanıcı adı değiştir</button>
             <input type="text" onChange={(e) => setAvatar(e.target.value)} />
             <button onClick={profileUpdate}>Resim değitir</button>
-            <input placeholder="parola güncelle" type="password" onChange={(e) => setNewPass(e.target.value)} />
+            <input placeholder="parola güncelle" value={newPass} type="password" onChange={(e) => setNewPass(e.target.value)} />
             <button onClick={updatePassHandle}>Parola Güncelle</button>
+            {newEmail}
+            <input type="text" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
+            <button onClick={handleEmail}>Eposta Güncelle</button>
+            <button>Telefon İşemleri</button>
+            <p>Emails: {user.email}</p>
+            <p>Emails: {user.displayName}</p>
 
+            <div>
+                {userData && (
+                    <div>
+                        <p>Name: {userData.nameLastName}</p>
+
+                        <p>Email: {userData.birthDate}</p>
+                        <p>Email: {userData.phoneNumber}</p>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

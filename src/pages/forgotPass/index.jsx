@@ -5,7 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useState, useEffect } from "react";
 import languages from "../../jsons/languages/languages.json"
 import { useSelector } from "react-redux";
-import { sendResetEmail } from "../../firebase/firebase";
+import { sendResetEmail } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 const ForgotPass = () => {
     const navigate = useNavigate()

@@ -3,7 +3,7 @@ import { GiConsoleController } from "react-icons/gi"
 import { FaBirthdayCake } from "react-icons/fa"
 import { Formik, Field, Form } from 'formik';
 import { Animated } from "react-animated-css";
-import { register } from "../../../../firebase/firebase";
+import { register } from "../../../../firebase/auth";
 import languages from "../../../../jsons/languages/languages.json"
 import toast from 'react-hot-toast';
 import * as Yup from "yup";
@@ -87,8 +87,8 @@ const Register = () => {
                 initialValues={initialValues}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { resetForm }) => {
-                    register(values.email, values.pass, values.userName, values.phoneNumber)
-                        .then((success) => {
+                    register(values.email, values.pass, values.userName, values.nameLastName, values.birthDay , values.phoneNumber)
+                        .then(() => {
                             toast.success(languages[language].registerErrors.successRegis);
                             resetForm();
                             setTimeout(() => {
@@ -97,7 +97,6 @@ const Register = () => {
                         })
                         .catch((error) => {
                             toast.error(languages[language].registerErrors.errorRegis);
-                            console.log(error)
                         });
                 }}
             >
@@ -117,7 +116,7 @@ const Register = () => {
 
                                     <AiOutlineForm className='  max-sm:hidden col-span-2 text-2xl ' />
                                     <label htmlFor="input-group-1" className='col-span-2 text-2xl grid  max-sm:place-self-center '> {languages[language].auth.register} </label>
-                                    
+
                                     {Object.keys(initialValues).map((key) => {
                                         return errors[key] && touched[key] ? (
                                             <Animated

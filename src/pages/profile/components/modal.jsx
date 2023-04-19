@@ -1,13 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react'
 
 import { Formik, Form } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import languages from "../../../jsons/languages/languages.json"
-import { reAuth } from '../../../firebase/firebase';
+import { reAuth } from '../../../firebase/auth';
 import { toast } from 'react-hot-toast';
 
 const Modal = ({ isOpen, Fragment, closeModal }) => {
-    const dispatch = useDispatch();
+   
     const { language } = useSelector((state) => state.theme);
 
     return (
