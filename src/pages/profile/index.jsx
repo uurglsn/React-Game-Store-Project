@@ -176,8 +176,7 @@ const Profile = () => {
             <button onClick={profileUpdate}>Resim değitir</button>
             <input placeholder="parola güncelle" value={newPass} type="password" onChange={(e) => setNewPass(e.target.value)} />
             <button onClick={updatePassHandle}>Parola Güncelle</button>
-            {newEmail}
-            <input type="text" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
+                <input type="text" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
             <button onClick={handleEmail}>Eposta Güncelle</button>
             <button>Telefon İşemleri</button>
             <p>Emails: {user.email}</p>

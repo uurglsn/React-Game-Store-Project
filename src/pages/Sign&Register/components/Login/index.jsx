@@ -1,8 +1,8 @@
 import { BsDoorClosedFill } from "react-icons/bs"
-import discordLogo from "../../images/discordLogo.png"
 import facebookLogo from "../../images/facebookLogo.png"
 import googleLogo from "../../images/googleLogo.png"
-import steamLogo from "../../images/steamLogo.png"
+import microsoftLogo from "../../images/microsoftLogo.png"
+import twitterLogo from "../../images/twitterLogo.png"
 import languages from "../../../../jsons/languages/languages.json"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
@@ -57,10 +57,11 @@ const Login = () => {
                     <BsDoorClosedFill className='  max-sm:hidden col-span-2 text-2xl ' />
                     <label htmlFor='input-group-1' className='col-span-2 text-2xl grid  max-sm:place-self-center '> {languages[language].auth.signIn} </label>
                     <p className="max-sm:hidden col-span-2 text-sm overflow-hidden break-words ">{languages[language].auth.quickLogin}</p>
-                    <button onClick={handleGoogleLogin} className='bg-black transition-colors  hover:bg-white border-2 border-black  hover:border-sky-500   group       p-3         rounded   flex   items-center   justify-center    '>  <img alt={[]} className='mx-3  w-7' src={googleLogo} />    <p className='  max-sm:hidden  text-sm  dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.googleLogin} </p>     </button>
-                    <button  onClick={handleFacebookLogin} className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      p-3    rounded   flex   items-center  justify-center       '>  <img alt={[]} className='  mx-3 w-7' src={facebookLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.facebookLogin} </p>     </button>
-                    <button  onClick={handleTwitterLogin} className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group    p-3     rounded   flex   items-center    justify-center   '>  <img alt={[]} className=' mx-3  w-7 ' src={steamLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.steamLogin} </p>     </button>
-                    <button  onClick={handleMicrosoftProvider} className='bg-black transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      gap-3 p-3   rounded   flex   items-center   justify-center     '>  <img alt={[]} className='   w-7' src={discordLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.discordLogin} </p>     </button>
+                    <button onClick={handleGoogleLogin} className='bg-black    transition-colors  hover:bg-white border-2 border-black  hover:border-sky-500   group       p-3         rounded           flex items-center gap-3  '>  <img alt={[]} className='mx-3  w-7' src={googleLogo} />    <p className='  max-sm:hidden  text-sm  dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.googleLogin} </p>     </button>
+                    <button onClick={handleMicrosoftProvider} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group     p-3   rounded         flex items-center    gap-3    '>  <img alt={[]} className=' mx-3  w-7' src={microsoftLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.microsoftLogin} </p>     </button>
+                    
+                    <button onClick={handleFacebookLogin} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      p-3    rounded            flex items-center gap-3   '>  <img alt={[]} className='  mx-3 w-7' src={facebookLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.facebookLogin} </p>     </button>
+                    <button onClick={handleTwitterLogin} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group    p-3     rounded          flex items-center gap-3   '>  <img alt={[]} className=' mx-3  w-7 ' src={twitterLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.twitterLogin} </p>     </button>
                     <p className='col-span-2 max-sm:hidden     '>{languages[language].auth.orEmail}</p>
                 </div></div>
             <Formik
