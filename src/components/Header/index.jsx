@@ -1,13 +1,9 @@
-// REACT
 import { useState, useEffect, Fragment } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-// Headlessui
 import { Menu, Transition } from '@headlessui/react'
-// Redux Toolkit React Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { changeLanguage, toRegisterOrSign } from "../../features/theme/themeSlice";
+import { changeLanguage } from "../../features/theme/themeSlice";
 import { loginOut } from "../../features/auth/authSlice";
-// React Icons
 import { FaNewspaper, FaHeadphones } from "react-icons/fa"
 import { MdPayments, MdQrCode, MdVideogameAsset, MdOutlineHelp, MdOutlineExitToApp, MdOutlineManageAccounts } from "react-icons/md"
 import { HiTranslate, HiSun } from "react-icons/hi";
@@ -16,11 +12,10 @@ import { BsTwitch, BsFillKeyFill, BsFillMoonFill, BsDoorClosedFill, BsArchive } 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineSearch, AiOutlineShoppingCart, AiOutlineClose, AiOutlineForm } from "react-icons/ai";
 import { BiSupport } from "react-icons/bi"
-// LanuageJSON Logo ReactCountryFlag
 import languages from "../../jsons/languages/languages.json"
 import ReactCountryFlag from "react-country-flag"
 import { logout } from "../../firebase/auth"
-
+import profilePhoto from "../../pages/profile/images/profile.jpeg"
 
 
 
@@ -146,8 +141,8 @@ const Header = () => {
                         <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
                             <Menu.Items className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${theme ? "bg-gradient-to-r from-sky-100 to-teal-100  dark:text-sky-500" : "bg-gradient-to-br from-gray-700 via-gray-900 to-black  "}`}>
                                 <div className={`py-1`}>
-                                    <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" onClick={() => dispatch(toRegisterOrSign(true))} className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
-                                    <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" onClick={() => dispatch(toRegisterOrSign(false))} className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
+                                    <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
+                                    <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth/register" className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold dark:text-black   dark:hover:text-sky-500 transition-colors`}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
                         </Transition>
                     </Menu>
 
@@ -160,7 +155,12 @@ const Header = () => {
                                 <Menu.Item
                                     className={`  cursor-default flex items-center`}>
                                     <div className='flex items-start  w-full h-full px-4 py-2 text-sm'>
-                                        <CgProfile />
+                                        <img
+                                           
+                                            alt={[]}
+                                            className="   w-5 h-5   rounded-full  "
+                                            src={user.photoURL ? user.photoURL : profilePhoto}
+                                        />
                                         <div className='flex flex-col pl-3'>
 
                                             <p className='dark:text-black overflow-hidden truncate'>
@@ -183,16 +183,6 @@ const Header = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
                 <AiOutlineSearch onClick={() => setShowModal(true)} className="hover:text-sky-500 transition-colors cursor-pointer" />
                 {showModal ? (
                     <>
@@ -212,17 +202,7 @@ const Header = () => {
 
                         <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                     </>
-                ) : null}
-
-
-
-
-
-
-
-
-
-
+                ) : ""}
 
 
                 {theme ? (<BsFillMoonFill className="hover:text-sky-500  transition-colors cursor-pointer" onClick={toggleTheme} />) : (<HiSun className="hover:text-sky-500 transition-colors cursor-pointer" onClick={toggleTheme} />)}
@@ -238,47 +218,21 @@ const Header = () => {
                 </Menu>
                 <AiOutlineShoppingCart />
 
+                {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <Menu as="div" className="relative   max-lg:inline-block  hidden  z-50   text-left">
-                    <div>
-                        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md  text-sm font-semibold  ">
-                            <CgProfile className="hover:text-sky-500 transition-colors cursor-pointer" />
-                        </Menu.Button></div>
-                    <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-                        <Menu.Items className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${theme ? "bg-gradient-to-r from-sky-100 to-teal-100  dark:text-sky-500" : "bg-gradient-to-br from-gray-700 via-gray-900 to-black  "}`}>
-                            <div className={`py-1`}>
-                                <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" onClick={() => dispatch(toRegisterOrSign(true))} className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold `}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
-                                <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" onClick={() => dispatch(toRegisterOrSign(false))} className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold `}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
-                    </Transition>
-                </Menu>
+                    !user ? (<Menu as="div" className="relative   max-lg:inline-block  hidden  z-50   text-left">
+                        <div>
+                            <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md  text-sm font-semibold  ">
+                                <CgProfile className="hover:text-sky-500 transition-colors cursor-pointer" />
+                            </Menu.Button></div>
+                        <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
+                            <Menu.Items className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md  shadow-lg ring-1   ring-black ring-opacity-5 focus:outline-none ${theme ? "bg-gradient-to-r from-sky-100 to-teal-100  dark:text-sky-500" : "bg-gradient-to-br from-gray-700 via-gray-900 to-black  "}`}>
+                                <div className={`py-1`}>
+                                    <Menu.Item className={` hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth" className='block w-full h-full px-4 py-2 text-sm'>  <p className={`pl-3  flex items-center  font-extrabold `}>  <BsDoorClosedFill className=" mr-3 " />  {languages[language].auth.signIn}</p></Link></Menu.Item>
+                                    <Menu.Item className={`hover:text-sky-500 transition-colors flex items-center`}><Link to="/auth/register" className="block w-full h-full px-4 py-2 text-sm" >  <p className={`pl-3  flex  items-center  font-extrabold `}> <AiOutlineForm className="  mr-3 " />  {languages[language].auth.register}</p></Link></Menu.Item></div></Menu.Items>
+                        </Transition>
+                    </Menu>) : ""
+                }
 
 
 

@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, FacebookAuthProvider , TwitterAuthProvider , OAuthProvider ,  GoogleAuthProvider, signOut, sendPasswordResetEmail, updateProfile, sendEmailVerification, updateEmail, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, FacebookAuthProvider, TwitterAuthProvider, OAuthProvider, GoogleAuthProvider, signOut, sendPasswordResetEmail, updateProfile, sendEmailVerification, updateEmail, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth"
 import { getFirestore, collection, addDoc } from "firebase/firestore"
+import { getStorage } from "firebase/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyDfrx28Y-dUPulV0trzlzCA4CuONA0vcfY",
     authDomain: "gamestore-63a72.firebaseapp.com",
@@ -10,13 +11,13 @@ const firebaseConfig = {
     messagingSenderId: "628436117100",
     appId: "1:628436117100:web:ba73f9b1df094dd639da49",
     measurementId: "G-YE27BELJKV"
-
 };
 export const googleProvider = new GoogleAuthProvider();
 export const facebookProvider = new FacebookAuthProvider()
 export const microsoftProvider = new OAuthProvider('microsoft.com');
 export const twitterProvider = new TwitterAuthProvider();
 const app = initializeApp(firebaseConfig);
+export const storage = getStorage(app)
 export const auth = getAuth()
 export const firestore = getFirestore(app);
 export const register = async (email, password, displayName, nameLastName, birthDate, phoneNumber) => {

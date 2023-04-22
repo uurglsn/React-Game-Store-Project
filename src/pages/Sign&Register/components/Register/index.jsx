@@ -87,16 +87,14 @@ const Register = () => {
                 initialValues={initialValues}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { resetForm }) => {
-                    register(values.email, values.pass, values.userName, values.nameLastName, values.birthDay , values.phoneNumber)
+                    register(values.email, values.pass, values.userName, values.nameLastName, values.birthDay, values.phoneNumber)
                         .then(() => {
                             toast.success(languages[language].registerErrors.successRegis);
                             resetForm();
-                            setTimeout(() => {
-                                navigate("/");
-                            }, 7000);
+                            navigate("/auth");
                         })
                         .catch((error) => {
-                            toast.error(languages[language].registerErrors.errorRegis);
+                            toast.error(error.code);
                         });
                 }}
             >
@@ -127,7 +125,7 @@ const Register = () => {
                                             >
                                                 {errors[key]}
                                             </Animated>
-                                        ) : null;
+                                        ) : "";
                                     })}
 
                                     <div className="relative max-sm:col-span-2   col-span-1">
@@ -256,7 +254,7 @@ const Register = () => {
                                     <button
                                         disabled={!isValid}
                                         type="submit"
-                                        className=' border-2   disabled:opacity-50   disabled:hover:bg-red-50 disabled:border-red-50 cursor-pointer disabled:cursor-default disabled:bg-red-50 disabled:text-red-400 border-black  hover:border-sky-500   bg-black  flex items-center justify-center w-64 max-sm:w-40  p-3 py-3     hover:bg-white hover   dark:hover:text-black hover:text-black  transition-colors rounded-xl  col-span-1 dark:text-white place-self-center'
+                                        className=' border-2   disabled:opacity-50   disabled:hover:bg-red-50 disabled:border-red-50  dark:disabled:text-black cursor-pointer disabled:cursor-default disabled:bg-red-50 disabled:text-red-400 border-black  hover:border-sky-500   bg-black  flex items-center justify-center w-64 max-sm:w-40  p-3 py-3     hover:bg-white hover   dark:hover:text-black hover:text-black  transition-colors rounded-xl  col-span-1 dark:text-white place-self-center'
                                     >{languages[language].auth.register}
                                     </button>
 

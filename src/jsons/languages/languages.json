@@ -98,7 +98,7 @@
             "rePassRequired": "Tekrar Şifre Zorunlu",
             "termsRequired": "Üyelik Sözleşmesini Kabul Etmelisiniz",
             "errorRegis": "Kayıt Başarısız",
-            "successRegis": "Kayıt Başarılı Ana Sayfaya Yönlendiriliyorsunuz",
+            "successRegis": "Kayıt Başarılı Giriş Yapabilirsiniz",
             "vertifyMail" : "E-Posta Adresinizi Doğrulayınız"
         }
     },
@@ -201,7 +201,7 @@
             "rePassRequired": "Require Password Again",
             "termsRequired": "You need to accept the terms and conditions",
             "errorRegis": "Registration Failed",
-            "successRegis": "Registration Successful. You Are Redirected To Homepage",
+            "successRegis": "Registration Successful You Can Sign In Now",
             "vertifyMail" : "Verify your e-mail address"
         }
     }

@@ -31,7 +31,7 @@ const Announcement = () => {
     }, []);
 
     if (!isVisible) {
-        return null;
+        return "";
     }
 
     return (

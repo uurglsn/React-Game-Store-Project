@@ -14,41 +14,16 @@ import { loginIn } from "../../../../features/auth/authSlice"
 const Login = () => {
     const dispatch = useDispatch();
     const { language } = useSelector((state) => state.theme);
-    const handleGoogleLogin = (event) => {
+    const handleQuickLogin = (event, provider) => {
         event.preventDefault();
-        signInWithPopup(auth, googleProvider)
+        signInWithPopup(auth, provider)
             .then((data) => {
+                toast.success("Giriş Başarılı Yönlendiriliyorsunuz")
                 dispatch(loginIn(data.user))
                 localStorage.setItem("user", JSON.stringify(data.user));
+            }).catch((error) => {
+                toast.error(error.code)
             })
-    }
-    const handleFacebookLogin = (event) => {
-        event.preventDefault();
-        signInWithPopup(auth, facebookProvider)
-            .then((data) => {
-                dispatch(loginIn(data.user))
-                localStorage.setItem("user", JSON.stringify(data.user));
-            })
-    }
-    const handleMicrosoftProvider = (event) => {
-        event.preventDefault();
-        signInWithPopup(auth, microsoftProvider)
-            .then((data) => {
-                dispatch(loginIn(data.user))
-                localStorage.setItem("user", JSON.stringify(data.user));
-            })
-    }
-    const handleTwitterLogin = (event) => {
-        event.preventDefault();
-        signInWithPopup(auth, twitterProvider)
-            .then((data) => {
-                dispatch(loginIn(data.user))
-                localStorage.setItem("user", JSON.stringify(data.user));
-            })
-    }
-    const loginInitalValues = {
-        email: "",
-        pass: ""
     }
     return (
         <>
@@ -57,15 +32,17 @@ const Login = () => {
                     <BsDoorClosedFill className='  max-sm:hidden col-span-2 text-2xl ' />
                     <label htmlFor='input-group-1' className='col-span-2 text-2xl grid  max-sm:place-self-center '> {languages[language].auth.signIn} </label>
                     <p className="max-sm:hidden col-span-2 text-sm overflow-hidden break-words ">{languages[language].auth.quickLogin}</p>
-                    <button onClick={handleGoogleLogin} className='bg-black    transition-colors  hover:bg-white border-2 border-black  hover:border-sky-500   group       p-3         rounded           flex items-center gap-3  '>  <img alt={[]} className='mx-3  w-7' src={googleLogo} />    <p className='  max-sm:hidden  text-sm  dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.googleLogin} </p>     </button>
-                    <button onClick={handleMicrosoftProvider} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group     p-3   rounded         flex items-center    gap-3    '>  <img alt={[]} className=' mx-3  w-7' src={microsoftLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.microsoftLogin} </p>     </button>
-                    
-                    <button onClick={handleFacebookLogin} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      p-3    rounded            flex items-center gap-3   '>  <img alt={[]} className='  mx-3 w-7' src={facebookLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.facebookLogin} </p>     </button>
-                    <button onClick={handleTwitterLogin} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group    p-3     rounded          flex items-center gap-3   '>  <img alt={[]} className=' mx-3  w-7 ' src={twitterLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.twitterLogin} </p>     </button>
+                    <button onClick={(event) => handleQuickLogin(event, googleProvider)} className='bg-black    transition-colors  hover:bg-white border-2 border-black  hover:border-sky-500   group       p-3         rounded           flex items-center gap-3  '>  <img alt={[]} className='mx-3  w-7' src={googleLogo} />    <p className='  max-sm:hidden  text-sm  dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.googleLogin} </p>     </button>
+                    <button onClick={(event) => handleQuickLogin(event, microsoftProvider)} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group     p-3   rounded         flex items-center    gap-3    '>  <img alt={[]} className=' mx-3  w-7' src={microsoftLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.microsoftLogin} </p>     </button>
+                    <button onClick={(event) => handleQuickLogin(event, facebookProvider)} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group      p-3    rounded            flex items-center gap-3   '>  <img alt={[]} className='  mx-3 w-7' src={facebookLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.facebookLogin} </p>     </button>
+                    <button onClick={(event) => handleQuickLogin(event, twitterProvider)} className='bg-black    transition-colors hover:bg-white  border-2 border-black  hover:border-sky-500  group    p-3     rounded          flex items-center gap-3   '>  <img alt={[]} className=' mx-3  w-7 ' src={twitterLogo} />    <p className=' max-sm:hidden text-sm dark:text-white group-hover:text-black transition-colors '> {languages[language].auth.twitterLogin} </p>     </button>
                     <p className='col-span-2 max-sm:hidden     '>{languages[language].auth.orEmail}</p>
                 </div></div>
             <Formik
-                initialValues={loginInitalValues}
+                initialValues={{
+                    email: "",
+                    pass: ""
+                }}
                 onSubmit={(values) => {
                     login(values.email, values.pass)
                         .then((user) => {

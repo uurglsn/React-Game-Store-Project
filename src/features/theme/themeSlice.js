@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   language: localStorage.getItem('language') || 'tr_TR',
   darkTheme: localStorage.getItem('theme') || 'dark',
-  signOrRegister: false,
 }
 
 export const themeSlice = createSlice({
@@ -18,12 +17,9 @@ export const themeSlice = createSlice({
       state.language = action.payload;
       localStorage.setItem('language', action.payload);
     },
-    toRegisterOrSign: (state, action) => {
-      state.signOrRegister = action.payload
-    },
   }
 })
 
-export const { changeTheme, changeLanguage, toRegisterOrSign } = themeSlice.actions
+export const { changeTheme, changeLanguage } = themeSlice.actions
 
 export default themeSlice.reducer
