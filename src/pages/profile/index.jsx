@@ -19,6 +19,7 @@ import { auth, update, storage } from '../../firebase/auth';
 import { loginIn } from '../../features/auth/authSlice';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+
 const Profile = () => {
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth);
